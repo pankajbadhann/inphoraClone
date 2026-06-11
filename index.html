@@ -1,21 +1,380 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inphora</title>
-</head>
-<body>
-    <header>
-        <div class="logo">Inphora</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    <main>coming Soon</main>
-    <footer></footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inphora Tech</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins, sans-serif;
+      }
+      .header-top {
+        height: 4vh;
+        background-color: #232434;
+        color: whitesmoke;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .top-contact-list {
+        display: flex;
+        gap: 2vw;
+        list-style-type: none;
+      }
+      .top-contact-list a {
+        padding: 0 1vw;
+        color: whitesmoke;
+        text-decoration: none;
+        font-size: 700;
+      }
+      .top-right a {
+        padding: 0 0.5vw;
+        color: whitesmoke;
+      }
+      .header-main {
+        position: sticky;
+        top: 0;
+        background-color: whitesmoke;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      nav {
+        width: 50vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 800;
+      }
+      nav a {
+        color: black;
+        text-decoration: none;
+      }
+      nav a:hover {
+        color: #0e89ab;
+      }
+      .burger {
+        height: 8vh;
+        display: flex;
+        align-items: center;
+        color: #0e89ab;
+        font-size: 30px;
+        cursor: pointer;
+      }
+      .wLogo {
+        color: white;
+        font-size: 40px;
+        background-color: #25d366;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+
+        cursor: pointer;
+        text-decoration: none;
+        z-index: 1000;
+      }
+      .wLogo:hover {
+        color: whitesmoke;
+      }
+      main {
+        height: 180vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      footer {
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+      }
+      ::-webkit-scrollbar {
+        width: 0.4vw;
+        background: #0e89ab6c;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #0e89ab;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #116880;
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -500px;
+        width: 450px;
+        height: 100vh;
+        color: #232434;
+        background: rgb(238, 234, 234);
+        transition: 0.4s;
+        z-index: 9999;
+        padding: 30px;
+      }
+
+      .sidebar.active {
+        right: 0;
+      }
+
+      .sidebar-nav {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-nav a {
+        color: #232434;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .sidebar-contact {
+        list-style-type: none;
+      }
+      .sidebar-contact i {
+        color: #0e89ab;
+        padding: 1vw;
+        font-size: 1.5rem;
+      }
+      .sidebar-contact a {
+        color: #232434;
+        text-decoration: none;
+        padding: 0.7vw;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .sidebar-link {
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: space-around;
+        padding: 2vw 0;
+      }
+      .sidebar-link a {
+        color: #0e89ab;
+      }
+      .close-btn {
+        text-align: right;
+        font-size: 30px;
+        cursor: pointer;
+        color: #0e89ab;
+      }
+      .desktop-sidebar-content {
+        display: block;
+      }
+
+      .mobile-sidebar-content {
+        display: none;
+      }
+
+      .sidebar-para {
+        margin: 25px 0;
+        line-height: 1.8;
+        font-size: 1.2rem;
+      }
+      @media (max-width: 768px) {
+        .desktop-nav,
+        .header-top {
+          display: none;
+        }
+
+        .burger {
+          display: flex;
+        }
+        .desktop-sidebar-content {
+          display: none;
+        }
+        .header-main {
+          justify-content: space-evenly;
+        }
+        .mobile-sidebar-content {
+          display: block;
+        }
+
+        .sidebar {
+          width: 100%;
+          right: -100%;
+        }
+
+        .sidebar.active {
+          right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-top">
+      <div class="top-left">
+        <ul class="top-contact-list">
+          <li>
+            <i class="far fa-envelope"></i
+            ><a class="link" href="mailto:info@example.com"
+              >contact@inphora.in</a
+            >
+          </li>
+          <li>
+            <i class="fa-solid fa-phone-volume"></i
+            ><a href="tel:2086660112">+91 8699941978</a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-right">
+        <span>Follow Us:</span
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/company/inphora/"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin-in"></i></a
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.instagram.com/inphora.in"
+          target="_blank"
+          ><i class="fa-brands fa-instagram"></i></a
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.youtube.com/@inphora"
+          target="_blank"
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="logo" width="200px" height="50px" />
+      </div>
+      <nav class="desktop-nav">
+        <a href="#">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="burger" id="burgerBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div>
+        <a
+          href="https://api.whatsapp.com/send/?phone=918699941978&text=Hi+I+am+interested+in+your+training+and+internship+program&type=phone_number&app_absent=0"
+          target="_blank"
+          class="wLogo"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <div class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+
+      <!-- Desktop Content -->
+      <div class="desktop-sidebar-content">
+        <img src="./assets/logo.png" width="180" alt="logo" />
+
+        <p class="sidebar-para" style="color: #585858">
+          INPHORA is an IT services and industrial training company delivering
+          secure web, app, and software solutions. We empower businesses and
+          learners across Central India with technology, training, and long-term
+          digital growth.
+        </p>
+        <h2 style="font-weight: 900; padding-bottom: 0.5vw">Contact Info</h2>
+        <ul class="sidebar-contact">
+          <li>
+            <i class="far fa-envelope"></i
+            ><a class="link" href="mailto:info@example.com"
+              >contact@inphora.in</a
+            >
+          </li>
+          <li>
+            <i class="fa-solid fa-phone-volume"></i
+            ><a href="tel:2086660112">+91 8699941978</a>
+          </li>
+        </ul>
+        <div class="sidebar-link">
+          <a
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/inphora/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin-in"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/inphora.in"
+            target="_blank"
+            ><i class="fa-brands fa-instagram"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/@inphora"
+            target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Mobile Content -->
+      <div class="mobile-sidebar-content">
+        <div class="sidebar-nav">
+          <a href="#">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="sidebar-link">
+          <a
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/inphora/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin-in"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/inphora.in"
+            target="_blank"
+            ><i class="fa-brands fa-instagram"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/@inphora"
+            target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <main>Coming Soon</main>
+    <footer>Footer Section Also Come Later</footer>
+  </body>
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    burgerBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+  </script>
 </html>
