@@ -1,11 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inphora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Inphora</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Header Styles */
+    .header-top {
+      height: 4vh;
+      background-color: #232434;
+      color: whitesmoke;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .top-contact-list {
+      display: flex;
+      gap: 2vw;
+      list-style-type: none;
+    }
+
+    .top-contact-list a {
+      color: whitesmoke;
+      text-decoration: none;
+    }
+
+    .header-main {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      height: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: #0e89ab;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 2vw;
+      align-items: center;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0e89ab;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+      padding: 80px 40px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    /* Services Grid */
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 80px 20px;
+    }
+
+    .services-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .services-title h2 {
+      font-size: 2.5rem;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .services-title p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, #1a8a9e 0%, #0f5a6a 100%);
+      padding: 40px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .service-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .service-card i {
+      font-size: 40px;
+      color: white;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin: 15px 0;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s;
+    }
+
+    .service-card:hover .read-more {
+      gap: 12px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #f9f9f9;
+      padding: 60px 40px;
+      margin-bottom: 60px;
+    }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-card i {
+      font-size: 40px;
+      color: #1a8a9e;
+      margin-bottom: 15px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.2rem;
+      margin: 15px 0;
+      color: #1a1a1a;
+    }
+
+    .contact-card p, .contact-card a {
+      font-size: 1rem;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      color: #1a8a9e;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h4 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: #1a8a9e;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      padding-top: 30px;
+      text-align: center;
+      color: #999;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .whatsapp-btn i {
+      color: white;
+      font-size: 28px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      nav {
+        gap: 1vw;
+        font-size: 14px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Services Section</h1>
+
+<!-- Header Top -->
+<div class="header-top">
+  <ul class="top-contact-list">
+    <li><a href="tel:+918699941978">📞 +91 8699941978</a></li>
+    <li><a href="mailto:contact@inphora.in">✉️ contact@inphora.in</a></li>
+  </ul>
+</div>
+
+<!-- Header Main -->
+<header class="header-main">
+  <a href="index.html" class="logo">INPHORA</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Transforming Ideas Into Scalable IT Solutions</h1>
+  <p>SERVICES WE OFFER</p>
+</section>
+
+<!-- Services Section -->
+<section class="services-container">
+  <div class="services-title">
+    <h2>Our Services</h2>
+    <p>Comprehensive IT solutions tailored to your business needs</p>
+  </div>
+
+  <div class="service-grid">
+    <a href="#website-development" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-code"></i>
+      </div>
+      <h3>Website Design And Development</h3>
+      <p>Create responsive, high-performance websites that drive traffic, generate leads, and scale your business across industries.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#mobile-app" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+      <h3>Mobile App Development</h3>
+      <p>Build intuitive Android & iOS apps with seamless UI/UX to engage users and boost business growth.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#digital-marketing" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-bullhorn"></i>
+      </div>
+      <h3>Digital Marketing</h3>
+      <p>Enhance your online presence with SEO, social media, paid campaigns, and performance-driven strategies.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#video-editing" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-video"></i>
+      </div>
+      <h3>Video Editing</h3>
+      <p>Create engaging, cinematic videos with motion graphics and storytelling to elevate your brand identity.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#software-development" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <h3>Software Development</h3>
+      <p>Develop scalable, secure software solutions tailored to automate workflows and solve real business challenges.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#cyber-audit" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3>Cyber Security Audits</h3>
+      <p>Leverage cloud-based storage and solutions to optimize operations, data security, and accessibility.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#cybersecurity" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h3>Cybersecurity Solutions</h3>
+      <p>Protect your digital assets with advanced threat detection, risk assessment, and secure infrastructure services.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#social-media" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-share-alt"></i>
+      </div>
+      <h3>Social Media Management</h3>
+      <p>Grow your brand with strategic, consistent content and campaigns across Instagram, LinkedIn, Facebook, and more.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+
+    <a href="#ai-ml" class="service-card">
+      <div class="service-icon-wrapper">
+        <i class="fas fa-robot"></i>
+      </div>
+      <h3>AI & Machine Learning Solutions</h3>
+      <p>Build intelligent systems using AI & ML — from data analysis and predictive models to automation and smart applications.</p>
+      <span class="read-more">Read More →</span>
+    </a>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <i class="fas fa-phone"></i>
+      <h3>Call Us 24/7</h3>
+      <a href="tel:+918699941978">+91 8699941978</a>
+    </div>
+    <div class="contact-card">
+      <i class="fas fa-envelope"></i>
+      <h3>Make a Quote</h3>
+      <a href="mailto:contact@inphora.in">contact@inphora.in</a>
+    </div>
+    <div class="contact-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Location</h3>
+      <p>Plot No. F-177, Kailash Tower 3rd Floor, Phase 8B, Sector 74, Mohali</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>About Inphora</h4>
+      <p>INPHORA is an IT services and industrial training company delivering secure web, app, and software solutions. We empower businesses and learners through technology, practical training, and long-term digital growth.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact Info</h4>
+      <ul>
+        <li><a href="tel:+918699941978">+91 8699941978</a></li>
+        <li><a href="mailto:contact@inphora.in">contact@inphora.in</a></li>
+        <li>Plot No. F-177, Kailash Tower 3rd Floor, Phase 8B, Sector 74, Mohali, Punjab</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 INPHORA. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/918699941978?text=Hi%20I%20am%20interested%20in%20your%20services" class="whatsapp-btn" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
