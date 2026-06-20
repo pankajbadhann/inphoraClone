@@ -1,11 +1,587 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inphora</title>
-</head>
-<body>
-    <h1>About Section</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Inphora</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/headFoot.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: #f8fafc;
+        color: #334155;
+        line-height: 1.7;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        position: relative;
+        height: 75vh;
+        background: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1920&q=80")
+          center center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.78);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 850px;
+        padding: 20px;
+        color: #fff;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        opacity: 0.95;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 90px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      .section-title p {
+        color: #64748b;
+        font-size: 1.05rem;
+      }
+
+      /* ABOUT */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        color: #0e89ab;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      /* MISSION & VISION */
+      .mission-section {
+        background: #ffffff;
+        padding: 80px 0;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: #fff;
+        padding: 35px;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+      }
+
+      .card h3 {
+        color: #0e89ab;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      /* VALUES */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+      }
+
+      .value-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        transition: 0.3s;
+      }
+
+      .value-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .value-card h4 {
+        color: #0e89ab;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      /* WHY CHOOSE US */
+      .why-us {
+        background: #f1f5f9;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .feature {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .feature h4 {
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      /* CTA */
+      .cta {
+        background: #0f172a;
+        color: white;
+        text-align: center;
+        padding: 90px 20px;
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .cta p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: #cbd5e1;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #0e89ab;
+        color: white;
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #0b647c;
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-top">
+      <div class="top-left">
+        <ul class="top-contact-list">
+          <li>
+            <i class="far fa-envelope"></i
+            ><a class="link" href="mailto:info@example.com"
+              >contact@inphora.in</a
+            >
+          </li>
+          <li>
+            <i class="fa-solid fa-phone-volume"></i
+            ><a href="tel:2086660112">+91 8699941978</a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-right">
+        <span>Follow Us:</span
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/company/inphora/"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin-in"></i></a
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.instagram.com/inphora.in"
+          target="_blank"
+          ><i class="fa-brands fa-instagram"></i></a
+        ><a
+          rel="noopener noreferrer"
+          href="https://www.youtube.com/@inphora"
+          target="_blank"
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="logo" width="200px" height="50px" />
+      </div>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="burger" id="burgerBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div>
+        <a
+          href="https://api.whatsapp.com/send/?phone=918699941978&text=Hi+I+am+interested+in+your+training+and+internship+program&type=phone_number&app_absent=0"
+          target="_blank"
+          class="wLogo"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <div class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+
+      <!-- Desktop Content -->
+      <div class="desktop-sidebar-content">
+        <img src="./assets/logo.png" width="180" alt="logo" />
+
+        <p class="sidebar-para" style="color: #585858">
+          INPHORA is an IT services and industrial training company delivering
+          secure web, app, and software solutions. We empower businesses and
+          learners across Central India with technology, training, and long-term
+          digital growth.
+        </p>
+        <h2 style="font-weight: 900; padding-bottom: 0.5vw">Contact Info</h2>
+        <ul class="sidebar-contact">
+          <li>
+            <i class="far fa-envelope"></i
+            ><a class="link" href="mailto:info@example.com"
+              >contact@inphora.in</a
+            >
+          </li>
+          <li>
+            <i class="fa-solid fa-phone-volume"></i
+            ><a href="tel:2086660112">+91 8699941978</a>
+          </li>
+        </ul>
+        <div class="sidebar-link">
+          <a
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/inphora/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin-in"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/inphora.in"
+            target="_blank"
+            ><i class="fa-brands fa-instagram"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/@inphora"
+            target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Mobile Content -->
+      <div class="mobile-sidebar-content">
+        <div class="sidebar-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="sidebar-link">
+          <a
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/inphora/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin-in"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/inphora.in"
+            target="_blank"
+            ><i class="fa-brands fa-instagram"></i></a
+          ><a
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/@inphora"
+            target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+        <h1>About Inphora</h1>
+        <p>
+          Empowering innovation, accelerating growth, and delivering
+          transformative digital solutions for modern businesses worldwide.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="container">
+      <div class="section-title">
+        <h2>Who We Are</h2>
+        <p>Driven by innovation. Focused on impact. Committed to excellence.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Our Story</h3>
+
+          <p>
+            Inphora is a forward-thinking company dedicated to helping
+            organizations navigate the digital future with confidence. We
+            combine technology, creativity, and strategic expertise to build
+            solutions that create measurable business value.
+          </p>
+
+          <p>
+            Our team works closely with clients to understand their goals, solve
+            complex challenges, and deliver scalable solutions that drive
+            long-term growth and success.
+          </p>
+
+          <p>
+            From startups to enterprises, we believe innovation should be
+            accessible, practical, and impactful.
+          </p>
+        </div>
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+            alt="Professional Team Collaboration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="cards">
+          <div class="card">
+            <h3>Our Mission</h3>
+            <p>
+              To empower businesses through innovative technology, strategic
+              insight, and scalable solutions that foster sustainable growth and
+              operational excellence.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Our Vision</h3>
+            <p>
+              To become a globally trusted innovation partner recognized for
+              delivering transformative digital experiences and meaningful
+              business outcomes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="container">
+      <div class="section-title">
+        <h2>Our Core Values</h2>
+        <p>The principles that guide every decision and every solution.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>Innovation</h4>
+          <p>Continuously exploring new ideas and technologies.</p>
+        </div>
+
+        <div class="value-card">
+          <h4>Integrity</h4>
+          <p>Building trust through transparency and accountability.</p>
+        </div>
+
+        <div class="value-card">
+          <h4>Excellence</h4>
+          <p>Delivering exceptional quality in everything we do.</p>
+        </div>
+
+        <div class="value-card">
+          <h4>Collaboration</h4>
+          <p>Creating success through teamwork and partnerships.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Inphora</h2>
+          <p>Trusted expertise combined with innovative thinking.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <h4>Client-Centric Approach</h4>
+            <p>
+              Every solution is tailored to your unique goals and challenges.
+            </p>
+          </div>
+
+          <div class="feature">
+            <h4>Expert Team</h4>
+            <p>
+              Skilled professionals with deep industry and technology expertise.
+            </p>
+          </div>
+
+          <div class="feature">
+            <h4>Scalable Solutions</h4>
+            <p>Designed to grow with your business and future ambitions.</p>
+          </div>
+
+          <div class="feature">
+            <h4>Long-Term Partnership</h4>
+            <p>
+              Focused on building lasting relationships and measurable success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Let's Build the Future Together</h2>
+
+      <p>
+        Whether you're launching a new idea, transforming your operations, or
+        scaling your business, Inphora is ready to help you achieve your vision.
+      </p>
+
+      <a href="contact.html" class="btn">Contact Us</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Inphora</h4>
+          <p>
+            INPHORA is an IT services and industrial training company delivering
+            secure web, app, and software solutions. We empower businesses and
+            learners through technology, practical training, and long-term
+            digital growth.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <ul>
+            <li><a href="tel:+918699941978">+91 8699941978</a></li>
+            <li><a href="mailto:contact@inphora.in">contact@inphora.in</a></li>
+            <li>
+              Plot No. F-177, Kailash Tower 3rd Floor, Phase 8B, Sector 74,
+              Mohali, Punjab
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 INPHORA. All Rights Reserved |
+          <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+  <script>
+    const burgerBtn = document.getElementById("burgerBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    burgerBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+  </script>
 </html>

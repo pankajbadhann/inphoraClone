@@ -1,0 +1,283 @@
+.header-top {
+  height: 4vh;
+  background-color: #232434;
+  color: whitesmoke;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.top-contact-list {
+  display: flex;
+  gap: 2vw;
+  list-style-type: none;
+}
+.top-contact-list a {
+  padding: 0 1vw;
+  color: whitesmoke;
+  text-decoration: none;
+  font-weight: 700;
+}
+.top-right a {
+  padding: 0 0.5vw;
+  color: whitesmoke;
+}
+.header-main {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: whitesmoke;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav {
+  width: 50vw;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #0e89ab;
+}
+.burger {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  color: #0e89ab;
+  font-size: 30px;
+  cursor: pointer;
+}
+.wLogo {
+  color: white;
+  font-size: 40px;
+  background-color: #25d366;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1000;
+}
+.wLogo:hover {
+  color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+  width: 0.4vw;
+  background: #0e89ab6c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0e89ab;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #116880;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 450px;
+  height: 100vh;
+  color: #232434;
+  background: rgb(238, 234, 234);
+  transition: 0.4s;
+  z-index: 9999;
+  padding: 30px;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar-nav {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-nav a {
+  color: #232434;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+}
+.sidebar-contact {
+  list-style-type: none;
+}
+.sidebar-contact i {
+  color: #0e89ab;
+  padding: 1vw;
+  font-size: 1.5rem;
+}
+.sidebar-contact a {
+  color: #232434;
+  text-decoration: none;
+  padding: 0.7vw;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.sidebar-link {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+  padding: 2vw 0;
+}
+.sidebar-link a {
+  color: #0e89ab;
+}
+.close-btn {
+  text-align: right;
+  font-size: 30px;
+  cursor: pointer;
+  color: #0e89ab;
+}
+.desktop-sidebar-content {
+  display: block;
+}
+
+.mobile-sidebar-content {
+  display: none;
+}
+
+.sidebar-para {
+  margin: 25px 0;
+  line-height: 1.8;
+  font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+  .desktop-nav,
+  .header-top {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+  .desktop-sidebar-content {
+    display: none;
+  }
+  .header-main {
+    justify-content: space-evenly;
+  }
+  .mobile-sidebar-content {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    right: -100%;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+}
+/* Footer */
+footer {
+  background: #232434;
+  color: #fff;
+  padding: 60px 20px 20px;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.footer-section {
+  min-width: 0;
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.footer-section p {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #1a8a9e;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #1a8a9e;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+}
